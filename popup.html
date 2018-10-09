@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--lib-->
+    <script src="lib/jquery-1.8.3.min.js"></script>
+    <!--<link rel="stylesheet" href="lib/pure-min.css">-->
+    <!--custom-->
+    <link rel="stylesheet" href="css/style.css">
+    <script src="popup.js"></script>
+</head>
+<body>
+<h2 class="title">自动下注</h2>
+<div class="main">
+    <!--<div style="display: flex;justify-content:space-around">-->
+
+    <h3>输入单注金额：</h3><input type="text" id="value_money">
+
+    <!--</div>-->
+    <h3>输入随机下注数目（6 - 9）：</h3>
+    <div>
+        <label>6</label><input type="radio" value="6" name="xz_num" class="input_radio">
+        <label>7</label><input type="radio" value="7" name="xz_num" checked="checked" class="input_radio">
+        <label>8</label><input type="radio" value="8" name="xz_num" class="input_radio">
+        <label>9</label><input type="radio" value="9" name="xz_num" class="input_radio">
+    </div>
+    <h3>输入下注的栏目（1 - 5）：</h3>
+    <div>
+        <label>1</label><input type="checkbox" value="1" name="value_column" class="input_radio">
+        <label>2</label><input type="checkbox" value="2" name="value_column" class="input_radio">
+        <label>3</label><input type="checkbox" value="3" name="value_column" class="input_radio">
+        <label>4</label><input type="checkbox" value="4" name="value_column" class="input_radio">
+        <label>5</label><input type="checkbox" value="5" name="value_column" class="input_radio">
+    </div>
+
+    <h3>输入下注的时间（剩余的时间）：</h3><input type="text" id="value_time">
+    <button type="submit" id="submit_btn">确定</button>
+    <button type="submit" id="stop_btn">停止</button>
+    <h4>当前盘剩余时间信息：</h4>
+    <h4 class="p_now_time"></h4>
+</div>
+<!--<h4>下注信息:</h4>-->
+<!--<h4>0,0,0,0</h4>-->
+</body>
+</html>

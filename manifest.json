@@ -1,0 +1,33 @@
+{
+  "name": "Lottery Tool",
+  "version": "1.0.2",
+  "author": "Nu1L",
+  "description": "彩票自动下注工具，Nu1L Design",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "icons": {
+    "16": "icon-16.png",
+    "128": "icon-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "lib/jquery-1.8.3.min.js",
+        "lib/bililiteRange.js",
+        "lib/jquery.sendkeys.js",
+        "contentScript.js"
+      ]
+    }
+  ]
+}
