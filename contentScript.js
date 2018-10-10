@@ -86,7 +86,7 @@ function select_num(s_money, s_column, s_xz_num) {
     setTimeout(function () {
         var btn = document.querySelectorAll(".btn")
         btn[1].click()
-    }, 100)
+    }, 500)
 
 }
 

@@ -30,7 +30,7 @@ window.onload = function () {
 
     submit_btn.click(function () {
         columns = background_vale.column
-        
+        xz_num = $("input[name='xz_num']:checked")
         column = $("input[name='value_column']:checked") //防止失效
         // xz_num = $("input[name='xz_num']:checked") //6:0 7:1 8:2 9:3
 
