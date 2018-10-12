@@ -6,6 +6,9 @@ var xz_time = 2
 var xz_num = 7
 var sy_time = ""
 var actionflag = false
+var quick_select_checkbox = false
+var quick_select_num = ""
+var quick_select_money = ""
 
 // 接收消息
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
@@ -21,6 +24,9 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             sy_time: sy_time,
             xz_time: xz_time,
             xz_num: xz_num,
+            quick_select_checkbox: quick_select_checkbox,
+            quick_select_num: quick_select_num,
+            quick_select_money: quick_select_money,
         });
     }
 });

@@ -1,7 +1,7 @@
 var timer;
 var sy_time = "";
 var actionflag = false
-var money, column, xz_num, xz_time
+var money, column, xz_num, xz_time, quick_select_checkbox, quick_select_num, quick_select_money
 var temp_stop = false
 
 setInterval(function () {
@@ -18,19 +18,29 @@ setInterval(function () {
             column = response.column
             xz_num = response.xz_num
             xz_time = response.xz_time
-            // console.log("//请求事件");
+            quick_select_checkbox = response.quick_select_checkbox
+            quick_select_num = response.quick_select_num
+            quick_select_money = response.quick_select_money
             // console.log(response)
         }
     );
 
     if (actionflag) {
-        console.log("当前时间" + time_format_m(sy_time) + ";   选取时间" + xz_time + "分钟0秒" + ";   下注金额" + money + ";   下注栏目" + column + ";  下注个数" + xz_num)
+        console.log("当前时间" + time_format_m(sy_time) + ";   选取时间" + xz_time + "分钟0秒" + ";   下注金额" + money + ";   下注栏目" + column + ";" +
+            "  下注个数" + xz_num + ";  快打:" + quick_select_checkbox + ";  快打号码:" + quick_select_num + ";  快打金额:" + quick_select_money)
     }
 
-    if (actionflag && (xz_time + "分钟0秒") == time_format_m(sy_time) && !temp_stop) {
-        select_num(money, column, xz_num)
 
-        //防止重复下注 2秒后恢复
+    if (actionflag && (xz_time + "分钟0秒") == time_format_m(sy_time) && !temp_stop) {
+        if (document.querySelector("#TabMenuBox > li:nth-child(1)").className != "active") {
+            document.querySelector("#TabMenuBox > li:nth-child(1) > a").click()
+            setTimeout(function () {
+                select_num(money, column, xz_num)
+            }, 1000)
+        } else {
+            select_num(money, column, xz_num)
+        }
+
         temp_stop = true
         setTimeout(function () {
             temp_stop = false
@@ -46,6 +56,7 @@ setTimeout(function () {
 
 
 function select_num(s_money, s_column, s_xz_num) {
+
 
     var clean_sel = document.querySelectorAll(".yellow")
     var sel = document.querySelectorAll(".onefix-item")
@@ -84,10 +95,26 @@ function select_num(s_money, s_column, s_xz_num) {
 
     //确认
     setTimeout(function () {
-        var btn = document.querySelectorAll(".btn")
-        btn[1].click()
+        document.querySelectorAll(".btn")[1].click()
+        quick_select(quick_select_checkbox, quick_select_num, quick_select_money)
     }, 500)
 
+}
+
+function quick_select(quick_select_checkbox, quick_select_num, quick_select_money) {
+    if (quick_select_checkbox == true) {
+        document.querySelector("#TabMenuBox > li:nth-child(3) > a").click()
+        setTimeout(function () {
+            $("#NumberFastBeat").val("")
+            $('#NumberFastBeat').trigger({type: 'keydown', key: quick_select_num + ""});
+            $("#SumFastBeat").val("")
+            $('#SumFastBeat').trigger({type: 'keydown', key: quick_select_money + ""});
+            setTimeout(function () {
+                document.querySelector("#confirm").click()
+            }, 200)
+        }, 1000)
+
+    }
 }
 
 function time_format_m(y_time) {

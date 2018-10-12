@@ -9,7 +9,7 @@ body,
 html {
     margin: 0;
     width: 400px;
-    height: 500px;
+    height: 550px;
 }
 
 label {
@@ -45,6 +45,56 @@ label {
     color: black;
     border: 1px black solid;
     box-shadow: 2px 2px black;
+}
+
+.quick_select {
+    /*background: rgba(0,0,0,0.25);*/
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.quick_select div {
+    height: 30px;
+    width: 100%;
+    display: inline-block;
+}
+
+.quick_select h3 {
+    line-height: 15px;
+    margin: 0;
+    float: left;
+}
+
+.quick_select input {
+    margin: 0px 0 0 10px;
+    height: 15px;
+    width: 15px;
+    line-height: 15px;
+    float: left
+}
+
+.quick_select_num {
+
+    margin-top: 10px;
+}
+
+.quick_select_money {
+    margin: 0;
+}
+
+/*.quick_select_num, .quick_select_money {*/
+    /*height: 30px;*/
+/*}*/
+
+.quick_select_num input, .quick_select_money input {
+    line-height: 15px;
+    height: 10px;
+    width: 150px;
+}
+
+.quick_select_num h3, .quick_select_money h3 {
+    height: 26px;
+    line-height: 26px;
 }
 
 input {
