@@ -14,14 +14,16 @@ window.onload = function () {
 
 
     //使用background值
-    money.val(background_vale.money)
-    xz_time.val(background_vale.xz_time)
-    deal_column();
-    $("input[name='xz_num']").eq((background_vale.xz_num - 6)).click(); //6:0 7:1 8:2 9:3
+    {   // 一字定
 
-    function deal_column() {
-        for (let i = 0; i < background_vale.column.length; i++) {
-            $("input[name='value_column']").eq(background_vale.column[i]).click();
+        money.val(background_vale.money)
+        xz_time.val(background_vale.xz_time)
+        deal_column();
+        $("input[name='xz_num']").eq((background_vale.xz_num - 6)).click(); //6:0 7:1 8:2 9:3
+        function deal_column() {
+            for (let i = 0; i < background_vale.column.length; i++) {
+                $("input[name='value_column']").eq(background_vale.column[i]).click();
+            }
         }
     }
 
@@ -98,7 +100,6 @@ window.onload = function () {
 
     setInterval(function () {
         $(".p_now_time")[0].innerHTML = background_vale.sy_time
-        // console.log(background_vale.sy_time);
     }, 100)
 
 }

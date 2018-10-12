@@ -5,7 +5,6 @@
     <title>Title</title>
     <!--lib-->
     <script src="lib/jquery-1.8.3.min.js"></script>
-    <!--<link rel="stylesheet" href="lib/pure-min.css">-->
     <!--custom-->
     <link rel="stylesheet" href="css/style.css">
     <script src="popup.js"></script>
@@ -13,11 +12,7 @@
 <body>
 <h2 class="title">自动下注</h2>
 <div class="main">
-    <!--<div style="display: flex;justify-content:space-around">-->
-
-    <h3>输入单注金额：</h3><input type="text" id="value_money">
-
-    <!--</div>-->
+    <h3>输入单注金额(#跳过)：</h3><input type="text" id="value_money">
     <h3>输入随机下注数目（6 - 9）：</h3>
     <div>
         <label>6</label><input type="radio" value="6" name="xz_num" class="input_radio">
@@ -40,7 +35,7 @@
         <div>
             <div class="quick_select_num">
                 <h3>输入号码：</h3>
-                <input type="text" disabled="disabled" class="quick_select_num_input">
+                <input placeholder="加'#'使用全转..." type="text" disabled="disabled" class="quick_select_num_input">
             </div>
             <div class="quick_select_money">
                 <h3>输入金额：</h3>
@@ -56,7 +51,5 @@
     <h4 class="p_now_time"></h4>
 </div>
 
-<!--<h4>下注信息:</h4>-->
-<!--<h4>0,0,0,0</h4>-->
 </body>
 </html>

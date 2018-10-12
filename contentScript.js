@@ -21,13 +21,17 @@ setInterval(function () {
             quick_select_checkbox = response.quick_select_checkbox
             quick_select_num = response.quick_select_num
             quick_select_money = response.quick_select_money
-            // console.log(response)
         }
     );
 
     if (actionflag) {
-        console.log("当前时间" + time_format_m(sy_time) + ";   选取时间" + xz_time + "分钟0秒" + ";   下注金额" + money + ";   下注栏目" + column + ";" +
-            "  下注个数" + xz_num + ";  快打:" + quick_select_checkbox + ";  快打号码:" + quick_select_num + ";  快打金额:" + quick_select_money)
+        if (money == "#") {
+            console.log("当前时间" + time_format_m(sy_time) + ";   选取时间" + xz_time + "分钟0秒" + "|| 一字定已跳过 ||" + ";  快打:" + quick_select_checkbox + ";  快打号码:" + quick_select_num + ";  快打金额:" + quick_select_money)
+
+        } else {
+            console.log("当前时间" + time_format_m(sy_time) + ";   选取时间" + xz_time + "分钟0秒" + ";   下注金额" + money + ";   下注栏目" + column + ";" +
+                "  下注个数" + xz_num + ";  快打:" + quick_select_checkbox + ";  快打号码:" + quick_select_num + ";  快打金额:" + quick_select_money)
+        }
     }
 
 
@@ -57,48 +61,50 @@ setTimeout(function () {
 
 function select_num(s_money, s_column, s_xz_num) {
 
-
-    var clean_sel = document.querySelectorAll(".yellow")
-    var sel = document.querySelectorAll(".onefix-item")
-    var ran_numbers = [];
-    var column_numbers = s_column;
-    var ran_i = s_xz_num;
-
-    for (let i = 0; i < clean_sel.length; i++) {
-        clean_sel[i].click()
-    }
-
-    function make_random() {
-        var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-        for (let i = 0; i < ran_i; i++) {
-            let ran_arr_num = Math.floor(Math.random() * arr.length)
-            ran_numbers.push(arr[ran_arr_num])
-            arr.splice(ran_arr_num, 1)
-            // console.log(ran_numbers);
-            // console.log(ran_arr_num);
-        }
-
-    }
-
-    for (let i = 0; i < column_numbers.length; i++) {
-        make_random()
-        for (let j = 0; j < s_xz_num; j++) {
-            // console.log((ran_numbers[j] + (column_numbers[i] * 10)));
-            sel[(ran_numbers[j] + (column_numbers[i] * 10))].click()
-        }
-        ran_numbers = [];
-    }
-
-    // //改变金额
-    $("#Money").val("")  //清空
-    $('#Money').trigger({type: 'keydown', key: s_money + ""});
-
-    //确认
-    setTimeout(function () {
-        document.querySelectorAll(".btn")[1].click()
+    if (s_money == "#") {
         quick_select(quick_select_checkbox, quick_select_num, quick_select_money)
-    }, 500)
+    } else {
+        var clean_sel = document.querySelectorAll(".yellow")
+        var sel = document.querySelectorAll(".onefix-item")
+        var ran_numbers = [];
+        var column_numbers = s_column;
+        var ran_i = s_xz_num;
 
+        for (let i = 0; i < clean_sel.length; i++) {
+            clean_sel[i].click()
+        }
+
+        function make_random() {
+            var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+            for (let i = 0; i < ran_i; i++) {
+                let ran_arr_num = Math.floor(Math.random() * arr.length)
+                ran_numbers.push(arr[ran_arr_num])
+                arr.splice(ran_arr_num, 1)
+                // console.log(ran_numbers);
+                // console.log(ran_arr_num);
+            }
+
+        }
+
+        for (let i = 0; i < column_numbers.length; i++) {
+            make_random()
+            for (let j = 0; j < s_xz_num; j++) {
+                // console.log((ran_numbers[j] + (column_numbers[i] * 10)));
+                sel[(ran_numbers[j] + (column_numbers[i] * 10))].click()
+            }
+            ran_numbers = [];
+        }
+
+        // //改变金额
+        $("#Money").val("")  //清空
+        $('#Money').trigger({type: 'keydown', key: s_money + ""});
+
+        //确认
+        setTimeout(function () {
+            document.querySelectorAll(".btn")[1].click()
+            quick_select(quick_select_checkbox, quick_select_num, quick_select_money)
+        }, 500)
+    }
 }
 
 function quick_select(quick_select_checkbox, quick_select_num, quick_select_money) {
@@ -106,9 +112,12 @@ function quick_select(quick_select_checkbox, quick_select_num, quick_select_mone
         document.querySelector("#TabMenuBox > li:nth-child(3) > a").click()
         setTimeout(function () {
             $("#NumberFastBeat").val("")
-            $('#NumberFastBeat').trigger({type: 'keydown', key: quick_select_num + ""});
+            $('#NumberFastBeat').trigger({type: 'keydown', key: quick_select_num.substr(0, 4) + ""});
             $("#SumFastBeat").val("")
             $('#SumFastBeat').trigger({type: 'keydown', key: quick_select_money + ""});
+            if (quick_select_num.charAt(quick_select_num.length - 1) == "#") {
+                document.querySelector("#QZCheckbox").click()
+            }
             setTimeout(function () {
                 document.querySelector("#confirm").click()
             }, 200)

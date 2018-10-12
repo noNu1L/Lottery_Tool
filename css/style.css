@@ -9,7 +9,7 @@ body,
 html {
     margin: 0;
     width: 400px;
-    height: 550px;
+    height: 580px;
 }
 
 label {
@@ -83,7 +83,7 @@ label {
 }
 
 /*.quick_select_num, .quick_select_money {*/
-    /*height: 30px;*/
+/*height: 30px;*/
 /*}*/
 
 .quick_select_num input, .quick_select_money input {
