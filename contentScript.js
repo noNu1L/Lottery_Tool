@@ -1,4 +1,4 @@
-var timer;
+// var timer;
 var sy_time = "";
 var actionflag = false
 var money, column, xz_num, xz_time, quick_select_checkbox, quick_select_num, quick_select_money
@@ -6,7 +6,6 @@ var temp_stop = false
 
 setInterval(function () {
     sy_time = document.querySelector(".stoptime").innerHTML
-    // console.log(sy_time);
     chrome.runtime.sendMessage(
         {
             sy_time: sy_time,
@@ -80,8 +79,6 @@ function select_num(s_money, s_column, s_xz_num) {
                 let ran_arr_num = Math.floor(Math.random() * arr.length)
                 ran_numbers.push(arr[ran_arr_num])
                 arr.splice(ran_arr_num, 1)
-                // console.log(ran_numbers);
-                // console.log(ran_arr_num);
             }
 
         }
