@@ -9,29 +9,29 @@
 ### 每30分钟自动刷新一次
 
 ### 目录结构描述
-├── css			                // Style
+├── css						// Style
 
 │    └── style.css
 
 ├── lib                        
 
-│   ├── bililiteRange.js        //模拟输入的扩展
+│   ├── bililiteRange.js		 //模拟输入的扩展
 
-│   ├── jquery.sendkeys.js      //模拟输入
+│   ├── jquery.sendkeys.js		//模拟输入
 
-│   ├── jquery-1.8.3.min.js     //库
+│   ├── jquery-1.8.3.min.js	//库
 
-│   └── pure-min.css            //响应式(暂未用到)
+│   └── pure-min.css			//响应式(暂未用到)
 
-├── background.js               //数据存储 间接用于通讯
+├── background.js			//数据存储 间接用于通讯
 
-├── contentScript.js            //后台驻留线程运行
+├── contentScript.js			//后台驻留线程运行
 
-├── icon-16.png                 //图标
+├── icon-16.png				//图标
 
 ├── icon-128.png
 
-├── popup.html             		//控制面板
+├── popup.html				//控制面板
 
 ├── popup.js                    
 
